@@ -1,0 +1,43 @@
+.min-landing {
+	max-width: 800px;
+	margin: 0 auto;
+}
+h2.main-heading {
+	text-align: center;
+	font-size: 3em;
+	color: rgb(3, 8, 35);
+}
+.image-container {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	padding: 2.8em 0;
+	border-radius: 0.2em;
+}
+
+.image-container::before {
+	content: '';
+	display: block;
+	padding-top: 56.25%;
+}
+
+.image-container img {
+	display: block;
+	width: 100%;
+	height: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.second-info {
+	background-color: rgb(3, 8, 35);
+	width: 100%;
+}
+
+.second-info h3 {
+	text-align: center;
+	color: white;
+	font-size: 2.4em;
+}

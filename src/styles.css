@@ -1,1 +1,163 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+/* @import url('https://fonts.googleapis.com/css?family=Roboto:400,400i&display=swap&subset=cyrillic,cyrillic-ext'); */
+@import url('https://fonts.googleapis.com/css?family=Pangolin&display=swap&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Caveat:700&display=swap&subset=cyrillic');
+@import url('./assets/forms.css');
+
+*,
+*:before,
+*:after {
+	margin: 0;
+	padding: 0;
+}
+
+/* Box sizing */
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+html {
+	font: 16px/1.5 'Pangolin', sans-serif;
+}
+
+body,
+table,
+form,
+button,
+input,
+select,
+textarea {
+	font: inherit;
+}
+body {
+	background-color: #dfdfdf;
+}
+
+a {
+	text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Caveat', 'Georgia', 'serif';
+	font-weight: 700;
+	padding-top: 0.5em;
+	padding-bottom: 0.3em;
+}
+
+h1 {
+	font-size: 2.4em;
+}
+
+h2 {
+	font-size: 2.2em;
+}
+
+h3 {
+	font-size: 2em;
+}
+
+h4 {
+	font-size: 1.8em;
+}
+
+h5 {
+	font-size: 1.6em;
+}
+
+h6 {
+	font-size: 1.3em;
+}
+
+button {
+	display: block;
+	margin: 0 auto;
+	border: none;
+	background-color: rgb(3, 8, 35);
+	color: white;
+	padding: 0.5em 1em;
+	font-size: inherit;
+	border: 2px solid white;
+	border-radius: 0.3em;
+	cursor: pointer;
+	/* font-weight: 700; */
+}
+
+button:hover {
+	background-color: white;
+	color: rgb(3, 8, 35);
+}
+
+button:disabled {
+	background-color: grey;
+	color: darkgray;
+	cursor: not-allowed;
+}
+
+.error {
+	font-size: 1.2em;
+	padding: 0.2em 1em;
+	text-align: center;
+}
+
+li.error {
+	width: 100%;
+	background-color: rgb(3, 8, 35);
+	color: white;
+	list-style-type: none;
+	margin-bottom: 0.5em;
+	border: 2px solid white;
+	border-radius: 0.2em;
+}
+
+input.error {
+	display: block;
+	background-color: white;
+	color: red;
+	padding: 0.5em;
+	margin-bottom: 1em;
+	margin-top: 0.2em;
+	width: 100%;
+	text-align: left;
+	border: 2px solid red;
+	/*border-color: red; */
+}
+
+.component-name {
+	max-width: 20em;
+	margin: 0 auto;
+}
+
+.component-name h3 {
+	text-align: center;
+	font-size: 2.4em;
+	font-style: italic;
+	letter-spacing: 2px;
+}
+
+.component-name::after {
+	width: 100%;
+	display: block;
+	content: '';
+	height: 4px;
+	background-color: rgb(3, 8, 35);
+	margin-bottom: 0.5em;
+}
+
+@media screen and (max-width: 450px) {
+	li.error {
+		font-size: 0.8em;
+	}
+}

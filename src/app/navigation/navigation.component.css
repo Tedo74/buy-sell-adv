@@ -1,0 +1,142 @@
+.nav {
+	background-color: rgb(3, 8, 35);
+	color: white;
+	padding: 1.5em 1em;
+	/* position: relative; */
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	flex-wrap: wrap;
+}
+
+.nik p {
+	font-family: 'Caveat', 'Georgia', 'serif';
+	/* margin-left: auto;
+	position: absolute;
+	right: 0;
+    top: 0; */
+	text-align: right;
+	padding-right: 1em;
+	font-size: 2.2em;
+	/* font-style: italic; */
+}
+div.logo {
+	padding-left: 1em;
+	width: 300px;
+	font-style: italic;
+	margin-right: 1em;
+}
+.logo h1 {
+	font-size: 3em;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+}
+.nav .nik {
+	width: 300px;
+}
+
+.nav ul {
+	/* flex: 1 1; */
+	display: flex;
+	list-style-type: none;
+	list-style-position: outside;
+	flex-wrap: wrap;
+	/* justify-content: center; */
+}
+.nav ul li {
+	/* border-right: 2px solid white; */
+	/* border-radius: 1em; */
+	border-bottom: 2px solid rgb(3, 8, 35);
+	margin-right: 0.5em;
+	margin-bottom: 0.2em;
+}
+
+.nav a {
+	font-size: 1.8em;
+	color: white;
+	display: block;
+	padding: 0.2em 0.5em;
+	/* font-weight: 700; */
+}
+
+.nav ul li:hover {
+	/* background-color: white;
+	color: rgb(3, 8, 35); */
+	border-bottom: 2px solid white;
+	border-color: white;
+}
+
+.nav li:hover a {
+	/* color: rgb(3, 8, 35); */
+	color: white;
+	/* font-weight: 700; */
+}
+
+@media screen and (max-width: 400px) {
+	.nav {
+		display: block;
+	}
+	.nav ul {
+		flex-direction: column;
+	}
+	.nav ul li {
+		border: 2px solid white;
+		display: block;
+		width: 100%;
+		margin-bottom: 1em;
+	}
+	.nav a {
+		display: block;
+		width: 100%;
+		text-align: center;
+	}
+	.nav ul li:hover {
+		background-color: white;
+		color: rgb(3, 8, 35);
+	}
+
+	.nav li:hover a {
+		color: rgb(3, 8, 35);
+	}
+
+	.nik p {
+		text-align: center;
+		padding-right: 0em;
+		font-size: 1.8em;
+	}
+
+	div.logo {
+		padding-left: 0;
+		width: 200px;
+		font-style: italic;
+		margin: 0;
+	}
+	.logo h1 {
+		font-size: 2em;
+	}
+	.nav .nik {
+		width: 200px;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.nav {
+		flex-direction: column;
+		align-items: center;
+		padding: 0.5em;
+	}
+
+	.logo h1 {
+		text-align: center;
+	}
+
+	.nik p {
+		text-align: center;
+		padding: 0;
+		padding-top: 0.5em;
+	}
+	.nav a {
+		font-size: 1.5em;
+	}
+}

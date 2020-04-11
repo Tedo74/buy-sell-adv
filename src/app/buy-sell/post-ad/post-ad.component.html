@@ -1,0 +1,11 @@
+<p>post-ad works!</p>
+<div class="form-wrapper">
+    <form #f="ngForm" (ngSubmit)="onPost(f)" class="form">
+        <p>
+            <label for="product-name">Product name:* </label>
+            <input type="text" id="product-name" name="name" #prodName="ngModel" ngModel required
+                [ngClass]="{error: (prodName.invalid && prodName.touched)}">
+        </p>
+        <button type="submit" [disabled]="f.invalid">Submit</button>
+    </form>
+</div>

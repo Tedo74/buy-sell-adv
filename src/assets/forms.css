@@ -1,0 +1,53 @@
+.form-wrapper {
+	margin: 1.5em auto;
+	background-color: rgb(3, 8, 35);
+	max-width: 30em;
+	padding: 2em;
+	border-radius: 0.5em;
+	font-size: 1.2em;
+	border: 2px solid black;
+}
+
+.form-auth {
+	border: 2px solid white;
+	padding: 2em;
+	background-color: rgb(135, 139, 142);
+	border-radius: inherit;
+}
+
+.form-auth input {
+	display: block;
+	padding: 0.5em;
+	margin-bottom: 1em;
+	margin-top: 0.2em;
+	width: 100%;
+	background-color: white;
+	font-size: 1.2em;
+	border: 2px solid rgb(3, 8, 35);
+	border-radius: 0.2em;
+}
+.form-auth label {
+	color: white;
+	font-size: 1.2em;
+}
+
+.form-auth button {
+	display: block;
+	margin: 0 auto;
+	border: none;
+	background-color: rgb(3, 8, 35);
+	color: white;
+	padding: 0.5em 1em;
+	font-size: inherit;
+	border: 2px solid white;
+	border-radius: inherit;
+	cursor: pointer;
+	font-weight: 700;
+	/* -webkit-transition-duration: 0.3s; */
+	/* Safari */
+	/* transition-duration: 0.3s; */
+}
+.form-auth button:hover {
+	background-color: white;
+	color: rgb(3, 8, 35);
+}
