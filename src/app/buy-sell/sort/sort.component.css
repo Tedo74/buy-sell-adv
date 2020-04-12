@@ -1,4 +1,5 @@
-.search {
+.sort {
+	margin-top: 0.5em;
 	padding: 0.4em;
 	background-color: rgb(3, 8, 35);
 	display: flex;
@@ -7,11 +8,6 @@
 	align-items: center;
 }
 
-.search input,
-.search button {
+.sort button {
 	margin: 0.2em;
-}
-
-.search-error {
-	border-color: red;
 }

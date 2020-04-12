@@ -12,6 +12,6 @@
         <li *ngIf="isAuth"><a (click)="logout()">Изход</a></li>
     </ul>
     <div class="nik">
-        <p *ngIf="nikname">Здравей, {{nikname}}</p>
+        <p *ngIf="nikname && isAuth"><a id="user" (click)="user()">Здравей, {{nikname}}</a></p>
     </div>
 </div>

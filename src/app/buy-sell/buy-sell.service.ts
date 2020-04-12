@@ -24,6 +24,7 @@ export class BuySellService {
 		this.allFbSubscriptions.push(
 			this.db
 				.collection('adv')
+				// .collection('adv', (ref) => ref.orderBy('price', 'asc'))
 				.snapshotChanges()
 				.pipe(
 					map((d) => {

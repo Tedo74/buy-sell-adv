@@ -1,5 +1,6 @@
-<div class="search" *ngIf="allAds">
+<div class="search-sort" *ngIf="allAds">
     <app-search [tobeFiltered]="allAds"></app-search>
+    <app-sort [toBeSorted]="allAds"></app-sort>
 </div>
 <div>
     <h3 *ngIf="errMsg">{{errMsg}}</h3>

@@ -74,6 +74,11 @@ div.logo {
 	/* font-weight: 700; */
 }
 
+#user {
+	cursor: pointer;
+	font-size: 1em;
+}
+
 @media screen and (max-width: 400px) {
 	.nav {
 		display: block;
@@ -105,6 +110,7 @@ div.logo {
 		text-align: center;
 		padding-right: 0em;
 		font-size: 1.8em;
+		cursor: pointer;
 	}
 
 	div.logo {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../user/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-navigation',
@@ -12,7 +13,7 @@ export class NavigationComponent implements OnInit {
 	nikname = '';
 	authSubscription: Subscription;
 	nikSubscription: Subscription;
-	constructor(private authService: AuthService) {}
+	constructor(private authService: AuthService, private router: Router) {}
 
 	ngOnInit(): void {
 		this.authSubscription = this.authService.authChange.subscribe((authStatus) => {
@@ -33,5 +34,9 @@ export class NavigationComponent implements OnInit {
 		this.isAuth = false;
 		// this.nikname = '';
 		// this.router.navigate([ '/' ]);
+	}
+
+	user() {
+		this.router.navigate([ '/user/panel' ]);
 	}
 }
