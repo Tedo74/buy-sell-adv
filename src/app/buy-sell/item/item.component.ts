@@ -22,6 +22,6 @@ export class ItemComponent implements OnInit {
 	getDetails() {
 		// this.adv.selectedItem = this.singleItem;
 		// this.router.navigate([ '/details' ]);
-		this.router.navigate([ '/details', this.singleItem.id ]);
+		this.router.navigate([ '/ads/details', this.item.id ]);
 	}
 }

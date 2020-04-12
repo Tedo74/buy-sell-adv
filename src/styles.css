@@ -114,7 +114,7 @@ button:disabled {
 
 li.error {
 	width: 100%;
-	background-color: rgb(3, 8, 35);
+	background-color: red;
 	color: white;
 	list-style-type: none;
 	margin-bottom: 0.5em;

@@ -1,0 +1,10 @@
+<div class="search" *ngIf="allAds">
+    <app-search [tobeFiltered]="allAds"></app-search>
+</div>
+<div *ngIf="filteredAds" class="items">
+    <app-item *ngFor="let item of filteredAds" [item]="item">
+    </app-item>
+</div>
+<div *ngIf="filteredAds.length<1">
+    <h4>Няма намерен обява...</h4>
+</div>

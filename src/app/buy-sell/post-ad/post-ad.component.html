@@ -1,49 +1,49 @@
 <div class="component-name">
-    <h3>Post</h3>
-    <h3 *ngIf="errMsg">AN ERROR OCCURRED!!!</h3>
+    <h3>Нова обява</h3>
+    <h3 *ngIf="errMsg">Грешка</h3>
 </div>
 <div class="form-wrapper">
     <form #f="ngForm" (ngSubmit)="onPost(f)" class="form">
         <div class="radio">
             <div>
-                <input type="radio" name="category" id="buy" value="buy" [(ngModel)]="category">
-                <label for="buy">Buy</label>
+                <input type="radio" name="category" id="buy" value="Купува" [(ngModel)]="category">
+                <label for="buy">Купува</label>
             </div>
             <div>
-                <input type="radio" name="category" id="sell" value="sell" [(ngModel)]="category">
-                <label for="sell">Sell</label>
+                <input type="radio" name="category" id="sell" value="Продава" [(ngModel)]="category">
+                <label for="sell">Продава</label>
             </div>
         </div>
         <p>
-            <label for="product-name">Product name:* </label>
+            <label for="product-name">Име на продукта:* </label>
             <input type="text" id="product-name" name="name" #prodName="ngModel" ngModel required
                 [ngClass]="{error: (prodName.invalid && prodName.touched)}">
         </p>
         <p>
-            <label for="image-url">Image url: </label>
+            <label for="image-url">Снимка url: </label>
             <input type="text" id="image-url" name="image" ngModel>
         </p>
         <p>
-            <label for="price">Price:* </label>
+            <label for="price">Цена:* </label>
             <input type="number" id="price" name="price" #price="ngModel" ngModel required
                 [ngClass]="{error: (price.invalid && price.touched)}">
         </p>
         <p>
-            <label for="phone">Phone:* </label>
+            <label for="phone">Телефон:* </label>
             <input type="number" id="phone" name="phone" #phone="ngModel" ngModel required
                 [ngClass]=" {error: (phone.invalid && phone.touched)}">
         </p>
         <p>
-            <label for="username">Username:* </label>
+            <label for="username">Потребител:* </label>
             <input type="text" id="username" name="username" #username="ngModel" ngModel required
                 [ngClass]=" {error: (username.invalid && username.touched)}">
         </p>
         <p>
-            <label for="details">Details:* </label>
+            <label for="details">Подробности:* </label>
             <textarea name="details" id="details" cols="30" rows="4" name="details" #details="ngModel" ngModel required
                 [ngClass]="{error: (details.invalid && details.touched)}"></textarea>
         </p>
 
-        <button type="submit" [disabled]="f.invalid">Submit</button>
+        <button type="submit" [disabled]="f.invalid">Публикувай</button>
     </form>
 </div>

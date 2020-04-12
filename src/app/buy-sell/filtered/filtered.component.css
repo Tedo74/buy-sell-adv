@@ -1,4 +1,9 @@
-.buy-sell-ads {
+h4 {
+	text-align: center;
+	font-size: 2.4em;
+}
+
+.items {
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;

@@ -30,6 +30,9 @@ export class PostAdComponent implements OnInit {
 	}
 
 	onPost(f: NgForm) {
-		this.db.post(f.value);
+		let userId = this.authService.adsUserId();
+		let comments = [ 'comments:' ];
+		let item = { ...f.value, userId, comments };
+		this.db.post(item);
 	}
 }

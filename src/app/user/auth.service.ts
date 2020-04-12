@@ -101,6 +101,7 @@ export class AuthService {
 		return this.userNik;
 	}
 	adsUserId() {
-		return this.userEmail + this.userId.substring(0, 6);
+		let uId = this.userEmail.split('@')[0];
+		return uId + this.userId.substring(0, 6);
 	}
 }

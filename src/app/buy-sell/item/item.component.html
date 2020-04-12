@@ -3,7 +3,7 @@
         <h4 class="name">{{item.name | uppercase}}</h4>
     </div>
     <p class="category">{{item.category}}</p>
-    <button class="details" (click)="getDetails()">details</button>
+    <button class="details" (click)="getDetails()">детайли</button>
     <div class="image-wrapper">
         <img [src]="item?.image" alt="item pic" *ngIf="item.image">
     </div>

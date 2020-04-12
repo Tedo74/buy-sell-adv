@@ -1,3 +1,11 @@
-<div *ngFor="let currentItem of allAds">
-    <app-item [item]="currentItem"></app-item>
+<div class="search" *ngIf="allAds">
+    <app-search [tobeFiltered]="allAds"></app-search>
+</div>
+<div>
+    <h3 *ngIf="errMsg">Грешка</h3>
+</div>
+<div class="buy-sell-ads" *ngIf="allAds">
+    <div *ngFor="let currentItem of allAds">
+        <app-item [item]="currentItem"></app-item>
+    </div>
 </div>

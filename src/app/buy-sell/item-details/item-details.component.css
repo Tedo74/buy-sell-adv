@@ -1,0 +1,87 @@
+@import url('../../../assets/cards.css');
+
+.item-details {
+	max-width: 1300px;
+	background-color: rgb(135, 139, 142);
+	margin: 1em auto;
+	border: 2px solid rgb(3, 8, 35);
+	border-radius: 0.3em;
+	align-items: center;
+	padding: 0.5em;
+	font-size: 1.2em;
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+
+.part-one {
+	min-width: 250px;
+	flex-basis: 650px;
+	flex: 1 1;
+	margin: 0.5em;
+}
+.part-two {
+	min-width: 250px;
+	margin: 0.5em;
+	flex-basis: 650px;
+	flex: 1 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: rgb(223, 223, 223);
+	border-radius: 0.3em;
+}
+
+.details,
+.contact,
+.info {
+	color: rgb(3, 8, 35);
+	font-size: 1.1em;
+	margin: 0.5em auto;
+	text-align: center;
+}
+.contact {
+	padding-top: 0.5em;
+	text-align: right;
+}
+
+.info {
+	width: 100%;
+	padding: 0 1em;
+	/* border: 2px solid rgb(3, 8, 35); */
+}
+.comments {
+	width: 100%;
+	padding: 0.5em;
+}
+
+.comments input {
+	width: 100%;
+	margin: 0.5em auto;
+}
+.comments button {
+	margin: 0.5em auto;
+}
+
+.price::after,
+.info::after {
+	content: '';
+	background-color: rgb(3, 8, 35);
+	display: block;
+	margin: 0.2em;
+	height: 5px;
+	width: 100%;
+}
+
+h5.category {
+	text-align: center;
+}
+
+.adds-edit-delete {
+	display: flex;
+	justify-content: center;
+}
+.adds-edit-delete button {
+	margin: 0;
+	margin: 0.3em;
+}

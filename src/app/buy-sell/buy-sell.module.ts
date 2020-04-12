@@ -8,11 +8,21 @@ import { ItemComponent } from './item/item.component';
 import { PostAdComponent } from './post-ad/post-ad.component';
 import { EditAdComponent } from './edit-ad/edit-ad.component';
 import { ItemDetailsComponent } from './item-details/item-details.component';
+import { SearchComponent } from './search/search.component';
+import { FilteredComponent } from './filtered/filtered.component';
 
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-	declarations: [ AdsComponent, ItemComponent, PostAdComponent, EditAdComponent, ItemDetailsComponent ],
+	declarations: [
+		AdsComponent,
+		ItemComponent,
+		PostAdComponent,
+		EditAdComponent,
+		ItemDetailsComponent,
+		SearchComponent,
+		FilteredComponent
+	],
 	imports: [ CommonModule, FormsModule, BuySellRoutingModule ],
 	exports: [ AdsComponent ]
 })

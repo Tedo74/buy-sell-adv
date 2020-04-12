@@ -1,1 +1,34 @@
-<p>item-details works!</p>
+<div>
+    <h3 *ngIf="errMsg">Грешка</h3>
+</div>
+<div class="item-details" *ngIf="selectedItem">
+    <section class="part-one">
+        <div class="single-item-header">
+            <h4 class="name">{{selectedItem.name | uppercase}}</h4>
+        </div>
+        <h5 class="category">{{selectedItem.category}}</h5>
+        <div class="image-wrapper">
+            <img [src]="selectedItem?.image" alt="singleItem pic" *ngIf="selectedItem.image">
+        </div>
+        <div class="adds-edit-delete" *ngIf="userMatch">
+            <button (click)="redirect()">Редактирай</button>
+            <button (click)="delete()">Изтрий обявата</button>
+        </div>
+    </section>
+    <section class="part-two">
+        <div class="info">
+            <p class="price">цена: {{ selectedItem.price | number:'1.2-2' }} лв.</p>
+            <p class="details">{{selectedItem.details}}</p>
+            <p class="contact">телефон: {{selectedItem.phone}} -
+                <span class="contact">{{selectedItem?.username}}</span>
+            </p>
+        </div>
+        <div class="comments">
+            <button (click)="pushComment(commentInput.value)">Коментар</button>
+            <input type="text" #commentInput>
+            <ng-container *ngIf="comments">
+                <p class="comment-single" *ngFor="let comment of comments">{{comment}}</p>
+            </ng-container>
+        </div>
+    </section>
+</div>

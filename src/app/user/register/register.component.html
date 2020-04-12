@@ -15,26 +15,25 @@
                 [ngClass]="{error: (emailInput.invalid&&emailInput.touched)}">
         </p>
         <p>
-            <label for="pass">Password:</label>
-            <input type="password" id="pass" name="password" #pass="ngModel" ngModel minlength="6"
+            <label for="pass">Парола:</label>
+            <input type="password" id="pass" name="password" #pass="ngModel" ngModel minlength="6" required
                 placeholder="password" autocomplete="on" (input)="check(passConfirm.value, pass.value)"
-                [ngClass]="{error: (pass.invalid && pass.touched)}">
+                [ngClass]="{error: (pass.touched && pass.invalid)}">
         </p>
         <p>
-            <label for="passConfirm">Confirm password:</label>
+            <label for="passConfirm">Повторете паролата:</label>
             <input type="password" id="passConfirm" name="passConfirm" #passConfirm="ngModel" ngModel minlength="6"
-                placeholder="repeat password" autocomplete="on" (input)="check(passConfirm.value, pass.value)"
+                required placeholder="repeat password" autocomplete="on" (input)="check(passConfirm.value, pass.value)"
                 [ngClass]="{error: (passConfirm.touched && !passCheck)}">
         </p>
         <ul *ngIf="f.invalid||!passCheck">
-            <li *ngIf="emailInput.invalid && emailInput.touched" class="error">Email is not valid!</li>
-            <li *ngIf="pass.invalid && pass.touched" class="error">Minimum length for password is 6 characters.
-            </li>
-            <li *ngIf="passConfirm.touched && !passCheck" class="error">Password does not match!
-            </li>
+            <li *ngIf="user.invalid && user.touched" class="error">Невалидно име!</li>
+            <li *ngIf="emailInput.invalid && emailInput.touched" class="error">Невалиден email адрес!</li>
+            <li *ngIf="pass.invalid && pass.touched" class="error">Минималната дължина на паролата е 6 знака.</li>
+            <li *ngIf="passConfirm.touched && !passCheck" class="error">Паролата не съвпада!</li>
         </ul>
         <p *ngIf="regErrorMessge" class="error"> {{regErrorMessge}}</p>
 
-        <button type="submit" [disabled]="f.invalid||!passCheck">Register</button>
+        <button type="submit" [disabled]="f.invalid||!passCheck">Регистрация</button>
     </form>
 </div>

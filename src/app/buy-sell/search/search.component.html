@@ -1,0 +1,4 @@
+<div class="search">
+    <input type="text" #search (keyup.enter)="onSearch(search.value)" [ngClass]="{'search-error': hasSearchError}">
+    <button (click)="onSearch(search.value)">Търси</button>
+</div>
