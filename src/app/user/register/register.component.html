@@ -1,0 +1,40 @@
+<div class="component-name">
+    <h3>Регистрация</h3>
+</div>
+<div class="form-wrapper">
+    <form #f="ngForm" (ngSubmit)="onReg(f)" class="form-auth">
+        <p>
+            <label for="user">Име:</label>
+            <input type="text" #user="ngModel" id="user" name="user" ngModel required placeholder="Вашето име"
+                autocomplete="on" [ngClass]="{error: (user.invalid&&user.touched)}">
+        </p>
+        <p>
+            <label for="mail">Email:</label>
+            <input type="email" #emailInput="ngModel" id="mail" name="email" ngModel email required
+                pattern="\w+\.*\w+@\w{2,}\.\w{2,}" placeholder="email" autocomplete="on"
+                [ngClass]="{error: (emailInput.invalid&&emailInput.touched)}">
+        </p>
+        <p>
+            <label for="pass">Password:</label>
+            <input type="password" id="pass" name="password" #pass="ngModel" ngModel minlength="6"
+                placeholder="password" autocomplete="on" (input)="check(passConfirm.value, pass.value)"
+                [ngClass]="{error: (pass.invalid && pass.touched)}">
+        </p>
+        <p>
+            <label for="passConfirm">Confirm password:</label>
+            <input type="password" id="passConfirm" name="passConfirm" #passConfirm="ngModel" ngModel minlength="6"
+                placeholder="repeat password" autocomplete="on" (input)="check(passConfirm.value, pass.value)"
+                [ngClass]="{error: (passConfirm.touched && !passCheck)}">
+        </p>
+        <ul *ngIf="f.invalid||!passCheck">
+            <li *ngIf="emailInput.invalid && emailInput.touched" class="error">Email is not valid!</li>
+            <li *ngIf="pass.invalid && pass.touched" class="error">Minimum length for password is 6 characters.
+            </li>
+            <li *ngIf="passConfirm.touched && !passCheck" class="error">Password does not match!
+            </li>
+        </ul>
+        <p *ngIf="regErrorMessge" class="error"> {{regErrorMessge}}</p>
+
+        <button type="submit" [disabled]="f.invalid||!passCheck">Register</button>
+    </form>
+</div>

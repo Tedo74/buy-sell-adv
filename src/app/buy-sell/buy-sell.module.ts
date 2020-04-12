@@ -7,9 +7,12 @@ import { AdsComponent } from './ads/ads.component';
 import { ItemComponent } from './item/item.component';
 import { PostAdComponent } from './post-ad/post-ad.component';
 import { EditAdComponent } from './edit-ad/edit-ad.component';
+import { ItemDetailsComponent } from './item-details/item-details.component';
+
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-	declarations: [ AdsComponent, ItemComponent, PostAdComponent, EditAdComponent ],
+	declarations: [ AdsComponent, ItemComponent, PostAdComponent, EditAdComponent, ItemDetailsComponent ],
 	imports: [ CommonModule, FormsModule, BuySellRoutingModule ],
 	exports: [ AdsComponent ]
 })

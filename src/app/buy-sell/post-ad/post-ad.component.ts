@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { BuySellService } from '../buy-sell.service';
 import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/user/auth.service';
+import { BuySellService } from '../buy-sell.service';
 
 @Component({
 	selector: 'app-post-ad',
@@ -8,9 +11,23 @@ import { NgForm } from '@angular/forms';
 	styleUrls: [ './post-ad.component.css' ]
 })
 export class PostAdComponent implements OnInit {
-	constructor(private db: BuySellService) {}
+	errorSubscription: Subscription;
+	errMsg = '';
+	category = 'sell';
+	constructor(
+		private authService: AuthService,
+		private db: BuySellService,
+		private router: Router
+	) {}
 
-	ngOnInit(): void {}
+	ngOnInit() {
+		this.errorSubscription = this.authService.errorMessageChange.subscribe((err) => {
+			this.errMsg = err;
+		});
+	}
+	ngOnDestroy() {
+		this.errorSubscription.unsubscribe();
+	}
 
 	onPost(f: NgForm) {
 		this.db.post(f.value);

@@ -1,7 +1,14 @@
-<p>item works!</p>
-<div>
+<div class="single-item">
     <div class="single-item-header">
         <h4 class="name">{{item.name | uppercase}}</h4>
     </div>
-    <button (click)="delete()">delete</button>
+    <p class="category">{{item.category}}</p>
+    <button class="details" (click)="getDetails()">details</button>
+    <div class="image-wrapper">
+        <img [src]="item?.image" alt="item pic" *ngIf="item.image">
+    </div>
+    <p class="price">{{item.price|number:'1.2-2'}} лв.</p>
+    <ng-content></ng-content>
+    <!-- <p>{{item.details}}</p>
+    <p class="contact">phone: {{item.phone}} <span class="contact">{{item?.username}}</span> -->
 </div>

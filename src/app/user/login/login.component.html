@@ -1,0 +1,19 @@
+<div class="component-name">
+    <h3>Вход</h3>
+</div>
+<div class="form-wrapper">
+    <form #f="ngForm" (ngSubmit)="onLogin(f)" class="form-auth">
+        <p>
+            <label for="mail">Email:</label>
+            <input type="email" id="mail" name="email" #mail ngModel email required placeholder="email"
+                autocomplete="on" [ngClass]="{error: loginErrorMessge}">
+        </p>
+        <p>
+            <label for=" pass">Password:</label>
+            <input type="password" id="pass" name="password" [(ngModel)]="pass" placeholder="password" autocomplete="on"
+                [ngClass]="{error: loginErrorMessge}">
+        </p>
+        <p *ngIf="loginErrorMessge" class="error"> {{loginErrorMessge}}</p>
+        <button #btn type="submit" [disabled]="f.invalid || !pass">Login</button>
+    </form>
+</div>

@@ -1,16 +1,17 @@
 <div class="nav">
     <div class="logo">
-        <h1 routerLink="/home">Малки обяви</h1>
+        <h1 *ngIf="isAuth" routerLink="/ads">Малки обяви</h1>
+        <h1 *ngIf="!isAuth" routerLink="/">Малки обяви</h1>
     </div>
     <ul>
-        <li><a routerLink="/">Home</a></li>
-        <li><a routerLink="/home">Home</a></li>
-        <li><a routerLink="/register">Register</a></li>
-        <li><a routerLink="/login">Login</a></li>
-        <li><a routerLink="/post">Post</a></li>
-        <li><a routerLink="/">Logout</a></li>
+        <li *ngIf="!isAuth"><a routerLink="/">Начало</a></li>
+        <li *ngIf="isAuth"><a routerLink="/ads">Обяви</a></li>
+        <li *ngIf="!isAuth"><a routerLink="/user/register">Регистрация</a></li>
+        <li *ngIf="!isAuth"><a routerLink="/user/login">Вход</a></li>
+        <li *ngIf="isAuth"><a routerLink="/ads/post">Публикувай</a></li>
+        <li *ngIf="isAuth"><a (click)="logout()">Изход</a></li>
     </ul>
     <div class="nik">
-        <!-- <p *ngIf="nikname">Hello, {{nikname}}</p> -->
+        <p *ngIf="nikname">Здравей, {{nikname}}</p>
     </div>
 </div>

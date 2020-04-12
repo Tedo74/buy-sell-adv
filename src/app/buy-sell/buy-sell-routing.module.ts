@@ -4,7 +4,7 @@ import { AdsComponent } from './ads/ads.component';
 import { PostAdComponent } from './post-ad/post-ad.component';
 
 const routes: Routes = [
-	{ path: 'ads', component: AdsComponent },
+	{ path: '', component: AdsComponent },
 	{ path: 'post', component: PostAdComponent }
 ];
 

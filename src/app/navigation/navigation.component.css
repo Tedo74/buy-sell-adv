@@ -70,6 +70,7 @@ div.logo {
 .nav li:hover a {
 	/* color: rgb(3, 8, 35); */
 	color: white;
+	cursor: pointer;
 	/* font-weight: 700; */
 }
 
