@@ -13,7 +13,7 @@ import { BuySellService } from '../buy-sell.service';
 export class PostAdComponent implements OnInit {
 	errorSubscription: Subscription;
 	errMsg = '';
-	category = 'sell';
+	category = 'Продава';
 	constructor(
 		private authService: AuthService,
 		private db: BuySellService,
@@ -21,7 +21,7 @@ export class PostAdComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		this.errorSubscription = this.authService.errorMessageChange.subscribe((err) => {
+		this.errorSubscription = this.db.dbErrorMsgChanged.subscribe((err) => {
 			this.errMsg = err;
 		});
 	}

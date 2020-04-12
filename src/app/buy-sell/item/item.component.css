@@ -1,1 +1,5 @@
 @import url('../../../assets/cards.css');
+
+p.category {
+	font-size: 1.2em;
+}

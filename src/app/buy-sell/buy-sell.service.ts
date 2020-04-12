@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 	providedIn: 'root'
 })
 export class BuySellService {
+	dbErrorMsg: string;
+	dbErrorMsgChanged = new Subject<string>();
 	allAds = <BuySell[]>[];
 	filteredAds = <BuySell[]>[];
 	allAdsChanged = new Subject<BuySell[]>();
@@ -31,10 +33,16 @@ export class BuySellService {
 						});
 					})
 				)
-				.subscribe((d) => {
-					this.allAds = d;
-					this.allAdsChanged.next(this.allAds);
-				})
+				.subscribe(
+					(d) => {
+						this.allAds = d;
+						this.allAdsChanged.next(this.allAds);
+					},
+					(err) => {
+						this.dbErrorMsg = 'Грешка при четене от база данни.';
+						this.dbErrorMsgChanged.next(this.dbErrorMsg);
+					}
+				)
 		);
 	}
 
@@ -46,23 +54,24 @@ export class BuySellService {
 				// console.log('Document written with ID: ', docRef.id);
 				this.router.navigate([ '/ads' ]);
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => {
+				this.dbErrorMsg = 'Грешка при публикуване в база данни.';
+				this.dbErrorMsgChanged.next(this.dbErrorMsg);
+			});
 	}
 
 	edit(id: string, changes: Partial<BuySell>) {
 		this.db.doc(`adv/${id}`).update(changes).then((r) => {}).catch((err) => {
-			// this.errMsg = 'Грешка';
-			console.log(err);
+			this.dbErrorMsg = 'Грешка при редактиране на данни.';
+			this.dbErrorMsgChanged.next(this.dbErrorMsg);
 		});
 	}
 
 	delete(id: string) {
-		this.db
-			.collection('adv')
-			.doc(id)
-			.delete()
-			.then((d) => {})
-			.catch((err) => console.log(err));
+		this.db.collection('adv').doc(id).delete().then((d) => {}).catch((err) => {
+			this.dbErrorMsg = 'Грешка при изтриване на обява от база данни.';
+			this.dbErrorMsgChanged.next(this.dbErrorMsg);
+		});
 	}
 
 	getById(id: string): Observable<any> {

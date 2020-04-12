@@ -8,10 +8,10 @@ import { FilteredComponent } from './filtered/filtered.component';
 
 const routes: Routes = [
 	{ path: '', component: AdsComponent },
-	{ path: 'post', component: PostAdComponent },
-	{ path: 'filtered', component: FilteredComponent },
 	{ path: 'details/:id', component: ItemDetailsComponent },
-	{ path: 'edit/:id', component: EditAdComponent }
+	{ path: 'edit/:id', component: EditAdComponent },
+	{ path: 'post', component: PostAdComponent },
+	{ path: 'filtered', component: FilteredComponent }
 ];
 
 @NgModule({

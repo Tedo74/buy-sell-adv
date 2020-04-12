@@ -36,7 +36,7 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
 	) {}
 
 	ngOnInit() {
-		this.errorSubscription = this.authService.errorMessageChange.subscribe((err) => {
+		this.errorSubscription = this.db.dbErrorMsgChanged.subscribe((err) => {
 			this.errMsg = err;
 		});
 
@@ -53,22 +53,28 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
 
 	getItem(id: string) {
 		if (id) {
-			this.getByIdSubscription = this.db.getById(id).subscribe((data: BuySell) => {
-				this.selectedItem = data;
+			this.getByIdSubscription = this.db.getById(id).subscribe(
+				(data: BuySell) => {
+					this.selectedItem = data;
 
-				if (data.comments) {
-					this.comments = data.comments;
+					if (data.comments) {
+						this.comments = data.comments;
+					}
+					let user = this.authService.adsUserId();
+					//get logged user
+					if (user === this.selectedItem.userId) {
+						//if user is creator show edit and delete buttons in tmplate
+						this.userMatch = true;
+					} else {
+						this.userMatch = false;
+					}
+					this.nikname = this.authService.getUserNik();
+				},
+				(err) => {
+					this.db.dbErrorMsg = 'Грешка при четене от база данни.';
+					this.db.dbErrorMsgChanged.next(this.db.dbErrorMsg);
 				}
-				let user = this.authService.adsUserId();
-				//get logged user
-				if (user === this.selectedItem.userId) {
-					//if user is creator show edit and delete buttons in tmplate
-					this.userMatch = true;
-				} else {
-					this.userMatch = false;
-				}
-				this.nikname = this.authService.getUserNik();
-			});
+			);
 		}
 	}
 

@@ -63,7 +63,6 @@ export class AuthService {
 			.signInWithEmailAndPassword(email, password)
 			.then((result) => {
 				this.authSuccessfully();
-				console.log('Login uid ', result.user.displayName);
 				this.userEmail = result.user.email;
 				this.userId = result.user.uid;
 				this.userNik = result.user.displayName;

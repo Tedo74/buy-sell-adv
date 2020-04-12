@@ -2,7 +2,7 @@
     <app-search [tobeFiltered]="allAds"></app-search>
 </div>
 <div>
-    <h3 *ngIf="errMsg">Грешка</h3>
+    <h3 *ngIf="errMsg">{{errMsg}}</h3>
 </div>
 <div class="buy-sell-ads" *ngIf="allAds">
     <div *ngFor="let currentItem of allAds">
