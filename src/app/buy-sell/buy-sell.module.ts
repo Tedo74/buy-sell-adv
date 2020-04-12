@@ -11,6 +11,7 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
 import { SearchComponent } from './search/search.component';
 import { FilteredComponent } from './filtered/filtered.component';
 import { SortComponent } from './sort/sort.component';
+import { UserAdsComponent } from './user-ads/user-ads.component';
 
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -23,9 +24,9 @@ import { SortComponent } from './sort/sort.component';
 		ItemDetailsComponent,
 		SearchComponent,
 		FilteredComponent,
-		SortComponent
+		SortComponent,
+		UserAdsComponent
 	],
-	imports: [ CommonModule, FormsModule, BuySellRoutingModule ],
-	exports: [ AdsComponent ]
+	imports: [ CommonModule, FormsModule, BuySellRoutingModule ]
 })
 export class BuySellModule {}

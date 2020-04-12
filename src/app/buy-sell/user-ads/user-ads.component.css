@@ -1,0 +1,21 @@
+@import url('../../../assets/cards.css');
+/**wrapper--my items--**/
+.single-item-wrapper {
+	/* width: 336px;
+	border: 2px solid white; */
+	background-color: rgb(3, 8, 35);
+}
+.my-items-container {
+	display: flex;
+	flex-wrap: wrap;
+}
+.single-item-wrapper {
+	margin: 1em;
+	border-radius: 0.5em;
+}
+.adds-edit-delete {
+	padding: 1em;
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+}
