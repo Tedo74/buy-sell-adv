@@ -14,6 +14,9 @@
             <button (click)="redirect()">Редактирай</button>
             <button (click)="delete()">Изтрий обявата</button>
         </div>
+        <div class="adds-edit-delete" *ngIf="!userMatch">
+            <button (click)="addToWishList()">Запази обявата</button>
+        </div>
     </section>
     <section class="part-two">
         <div class="info">

@@ -4,6 +4,7 @@ import { Observable, Subject, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BuySell } from './buy-sell.model';
 import { Router } from '@angular/router';
+import { UserAds } from './user-ads.model';
 // import * as firebase from 'firebase/app';
 // import 'firebase/firestore'
 
@@ -17,6 +18,8 @@ export class BuySellService {
 	filteredAds = <BuySell[]>[];
 	allAdsChanged = new Subject<BuySell[]>();
 	allFbSubscriptions: Subscription[] = [];
+	userWishlist: string[] = [];
+	userWishlistChanged = new Subject<string[]>();
 
 	constructor(private db: AngularFirestore, private router: Router) {}
 
@@ -88,4 +91,44 @@ export class BuySellService {
 	cancelSubscriptions() {
 		this.allFbSubscriptions.forEach((subs) => subs.unsubscribe());
 	}
+
+	getWishList(uid: string) {
+		this.allFbSubscriptions.push(
+			this.db
+				.collection('users')
+				.doc(uid)
+				.valueChanges()
+				.subscribe((d: UserAds) => {
+					if (d) {
+						this.userWishlist = d.wishlist;
+						this.userWishlistChanged.next(this.userWishlist);
+					}
+				})
+		);
+	}
+
+	createWishelist(uid: string, wishedItemId: string) {
+		this.db.collection('users').doc(uid).set({ wishlist: [ wishedItemId ] });
+	}
+
+	editWishlist(uid: string, wishes: string[]) {
+		this.db.collection('users').doc(uid).update({ wishlist: wishes });
+	}
+	// saveWishlist(){
+	// // .subscribe((d: UserAds) => {
+	// 	console.log(wishlist);
+	// 	if (wishlist) {
+	// 		let wishes = d.wishlist;
+	// 		wishes.push(itemId);
+	// 		// if (!wishes.includes(itemId)) {
+	// 		console.log(wishes);
+
+	// 		this.db.doc(`users/${uid}`).update({ wishlist: wishes });
+	// 		// }
+	// 	}
+	// 	// else {
+	// 	// 	this.db.collection('users').doc(uid).set({ wishlist: [ itemId ] });
+	// 	// }
+	// // });
+	// }
 }

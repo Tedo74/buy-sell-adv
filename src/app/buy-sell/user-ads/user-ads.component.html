@@ -1,11 +1,22 @@
-<div *ngIf="myItems.length>0" class="my-items-container">
-    <div *ngFor="let item of myItems" class="single-item-wrapper">
-        <app-item [item]="item">
-            <div class="adds-edit-delete">
-                <button (click)="edit(item)">Edit</button>
-                <button (click)="delete(item)">Delete item</button>
-            </div>
-        </app-item>
+<div *ngIf="myItems">
+    <h3>Моите обяви</h3>
+    <div class="my-items-container">
+        <div *ngFor="let item of myItems" class="single-item-wrapper">
+            <app-item [item]="item">
+                <div class="adds-edit-delete">
+                    <button (click)="edit(item)">Edit</button>
+                    <button (click)="delete(item)">Delete item</button>
+                </div>
+            </app-item>
+        </div>
     </div>
 </div>
 <p *ngIf="myItems.length<1">You have not items!</p>
+<section *ngIf="wishlisted">
+    <h3>Запазени обяви</h3>
+    <div class="my-items-container">
+        <div *ngFor="let item of wishlisted" class="single-item-wrapper wishes">
+            <app-item [item]="item"></app-item>
+        </div>
+    </div>
+</section>

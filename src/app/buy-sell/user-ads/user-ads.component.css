@@ -19,3 +19,9 @@
 	display: flex;
 	justify-content: space-evenly;
 }
+.wishes {
+	background-color: rgb(135, 139, 142);
+}
+h3 {
+	text-align: center;
+}

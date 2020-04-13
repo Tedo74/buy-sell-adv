@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { BuySell } from '../buy-sell.model';
 import { AuthService } from 'src/app/user/auth.service';
@@ -10,10 +10,13 @@ import { Router } from '@angular/router';
 	templateUrl: './user-ads.component.html',
 	styleUrls: [ './user-ads.component.css' ]
 })
-export class UserAdsComponent implements OnInit {
+export class UserAdsComponent implements OnInit, OnDestroy {
 	errorSubscription: Subscription;
 	errMsg = '';
 	myItems: BuySell[];
+	wishlistIds: string[];
+	wishlisted: BuySell[] = [];
+	wishesSubscription: Subscription;
 
 	constructor(
 		private authService: AuthService,
@@ -25,8 +28,15 @@ export class UserAdsComponent implements OnInit {
 		this.errorSubscription = this.db.dbErrorMsgChanged.subscribe((err) => {
 			this.errMsg = err;
 		});
-
 		let user = this.authService.adsUserId();
+
+		this.db.getWishList(user);
+		this.wishlistIds = this.db.userWishlist;
+		this.wishesSubscription = this.db.userWishlistChanged.subscribe((w) => {
+			this.wishlistIds = w;
+			this.getWishListed();
+		});
+
 		this.myItems = this.db.allAds.filter((i: BuySell) => {
 			if (i.userId === user) {
 				return true;
@@ -37,6 +47,7 @@ export class UserAdsComponent implements OnInit {
 
 	ngOnDestroy() {
 		this.errorSubscription.unsubscribe();
+		this.wishesSubscription.unsubscribe();
 	}
 
 	edit(item: BuySell) {
@@ -53,5 +64,21 @@ export class UserAdsComponent implements OnInit {
 		this.myItems = this.myItems.filter((i) => {
 			return i.id !== id;
 		});
+	}
+
+	getWishListed() {
+		let allAds = this.db.allAds;
+		console.log(this.wishlistIds);
+
+		if (this.wishlistIds) {
+			for (let i = 0; i < this.wishlistIds.length; i++) {
+				for (let x = 0; x < allAds.length; x++) {
+					if (allAds[x].id === this.wishlistIds[i]) {
+						this.wishlisted.push(allAds[x]);
+						break;
+					}
+				}
+			}
+		}
 	}
 }

@@ -14,6 +14,8 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
 	errorSubscription: Subscription;
 	getByIdSubscription: Subscription;
 	idSubscription: Subscription;
+	wishesSubscription: Subscription;
+	wishlist: string[];
 	errMsg = '';
 	//selectedItem: BuySell;
 	id = '';
@@ -49,6 +51,12 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
 		this.nikSubscription = this.authService.nikChange.subscribe((nik) => {
 			this.nikname = nik;
 		});
+
+		let userId = this.authService.adsUserId();
+		this.db.getWishList(userId);
+		this.wishesSubscription = this.db.userWishlistChanged.subscribe((w) => {
+			this.wishlist = w;
+		});
 	}
 
 	getItem(id: string) {
@@ -83,6 +91,7 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
 		this.errorSubscription.unsubscribe();
 		this.getByIdSubscription.unsubscribe();
 		this.idSubscription.unsubscribe();
+		this.wishesSubscription.unsubscribe();
 	}
 
 	pushComment(comment: string) {
@@ -115,5 +124,25 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
 		// this.adv.getAllAds();
 
 		// return;
+	}
+
+	addToWishList() {
+		let id = this.id;
+		let userId = this.authService.adsUserId();
+		// this.db.getWishList(userId, id);
+
+		if (!this.wishlist) {
+			// console.log('wishlist not exists');
+			this.db.createWishelist(userId, id);
+		} else {
+			if (this.wishlist.includes(id)) {
+				// console.log('INCLUDES');
+			} else {
+				// console.log('Not includes');
+				this.wishlist.push(id);
+				console.log(this.wishlist);
+				this.db.editWishlist(userId, this.wishlist);
+			}
+		}
 	}
 }

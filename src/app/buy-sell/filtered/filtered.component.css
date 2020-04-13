@@ -10,12 +10,17 @@ h4 {
 	padding: 1em;
 }
 
-.search {
+.search-sort {
+	display: flex;
+	flex-direction: column;
 	margin: 1em auto;
-	background-color: rgb(3, 8, 35);
+	background-color: rgb(135, 139, 142);
 	border: 1px solid rgb(3, 8, 35);
 	border-radius: 0.3em;
 	color: white;
 	padding: 0.3em;
-	max-width: 400px;
+	max-width: 480px;
+}
+.search-sort button {
+	padding: 0.3em 0.8em;
 }
