@@ -17,6 +17,7 @@ export class UserAdsComponent implements OnInit, OnDestroy {
 	wishlistIds: string[];
 	wishlisted: BuySell[] = [];
 	wishesSubscription: Subscription;
+	userId: string;
 
 	constructor(
 		private authService: AuthService,
@@ -28,9 +29,9 @@ export class UserAdsComponent implements OnInit, OnDestroy {
 		this.errorSubscription = this.db.dbErrorMsgChanged.subscribe((err) => {
 			this.errMsg = err;
 		});
-		let user = this.authService.adsUserId();
+		this.userId = this.authService.adsUserId();
 
-		this.db.getWishList(user);
+		this.db.getWishList(this.userId);
 		this.wishlistIds = this.db.userWishlist;
 		this.wishesSubscription = this.db.userWishlistChanged.subscribe((w) => {
 			this.wishlistIds = w;
@@ -38,7 +39,7 @@ export class UserAdsComponent implements OnInit, OnDestroy {
 		});
 
 		this.myItems = this.db.allAds.filter((i: BuySell) => {
-			if (i.userId === user) {
+			if (i.userId === this.userId) {
 				return true;
 			}
 			return false;
@@ -67,17 +68,38 @@ export class UserAdsComponent implements OnInit, OnDestroy {
 	}
 
 	getWishListed() {
+		this.wishlisted = [];
 		let allAds = this.db.allAds;
-		console.log(this.wishlistIds);
+		let notFound = [];
 
 		if (this.wishlistIds) {
 			for (let i = 0; i < this.wishlistIds.length; i++) {
+				let isFound = false;
 				for (let x = 0; x < allAds.length; x++) {
-					if (allAds[x].id === this.wishlistIds[i]) {
+					if (this.wishlistIds[i] === allAds[x].id) {
 						this.wishlisted.push(allAds[x]);
+						isFound = true;
 						break;
 					}
 				}
+				if (!isFound) {
+					notFound.push(this.wishlistIds[i]);
+				}
+			}
+
+			if (notFound) {
+				// console.log('notFound', notFound);
+				let wl = [ ...this.wishlistIds ];
+				// console.log('wl before', wl);
+
+				for (let i = 0; i < notFound.length; i++) {
+					wl = wl.filter((currId) => {
+						return currId !== notFound[i];
+					});
+				}
+				// console.log('wl after', wl);
+
+				this.db.editWishlist(this.userId, wl);
 			}
 		}
 	}

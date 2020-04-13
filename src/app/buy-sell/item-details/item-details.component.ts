@@ -129,7 +129,6 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
 	addToWishList() {
 		let id = this.id;
 		let userId = this.authService.adsUserId();
-		// this.db.getWishList(userId, id);
 
 		if (!this.wishlist) {
 			// console.log('wishlist not exists');
@@ -140,7 +139,6 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
 			} else {
 				// console.log('Not includes');
 				this.wishlist.push(id);
-				console.log(this.wishlist);
 				this.db.editWishlist(userId, this.wishlist);
 			}
 		}
